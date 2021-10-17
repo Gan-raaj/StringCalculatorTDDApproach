@@ -6,10 +6,10 @@ public class StringCalculator {
 		if(number == "") {
 			return 0;
 		}
-		return 0;
-		//number = removalOfDelimiters(number);
-		//checkForNegativeNumbers(number);
-		//number = removeLargeNumbers(number);
+		
+		number = removalOfDelimiters(number);
+		checkForNegativeNumbers(number);
+		number = removeLargeNumbers(number);
 		return sum(splitString(number));
 	}
 	
@@ -51,4 +51,38 @@ public class StringCalculator {
 		}
 		return number;
 	}
+
+	private static int toInt(String str) {
+		return Integer.parseInt(str);
+	}
+	
+	private void checkForNegativeNumbers(String number) {
+		String[] negs = splitString(number);
+		String negatives = "";
+
+		for(String nums : negs) {
+			if(nums.contains("-")) {
+				negatives += nums + ",";
+			}
+		}
+
+		if(!negatives.isEmpty()) {
+			throw new IllegalArgumentException("Negatives not allowed: " + negatives);
+		}
+	}
+	
+	private static String removeLargeNumbers(String number) {
+		StringBuilder fixedString = new StringBuilder();
+
+		String[] nums = splitString(number);
+
+		for(String num : nums) {
+			if(toInt(num) <= 1000) {
+				fixedString.append(num + ",");
+			}
+		}
+
+		return fixedString.toString();
+	}
+
 }
