@@ -20,4 +20,8 @@ public class TestStringCal {
 		assertEquals(0,sc.add(""));
 	}
 	
-	}
+	@Test
+	public void testForOneNumber() {
+		assertEquals(1,sc.add("1"));
+	}	
+}
