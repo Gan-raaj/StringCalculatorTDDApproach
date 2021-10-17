@@ -23,5 +23,20 @@ public class TestStringCal {
 	@Test
 	public void testForOneNumber() {
 		assertEquals(1,sc.add("1"));
+	}
+
+	@Test
+	public void testForTwoNumbers() {
+		assertEquals(3,sc.add("1,2"));
+	}
+	
+	@Test
+	public void testForMultipleNumbers() {
+		assertEquals(6,sc.add("1,2,3"));
+	}
+	
+	@Test
+	public void testForMultipleNumbers2() {
+		assertEquals(10,sc.add("1,2,3,4"));
 	}	
 }

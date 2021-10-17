@@ -26,4 +26,29 @@ public class StringCalculator {
 		String[] numbers = number.split(",");
 		return number.split(",");
 	}
+
+	private static String removalOfDelimiters(String number) {
+		number = number.replace("\n", ",");
+
+		if(number.startsWith("//[")) {			
+			String delim = number.substring(3, number.indexOf("]"));
+			
+			if(delim.contains("-"))
+				throw new IllegalArgumentException("Illegal delimiter: " + delim);
+			
+			number = number.substring(5 + delim.length());
+			number = number.replace(delim, ",");
+		}
+
+		if (number.startsWith("//")) {
+			String delim = number.substring(2, 3);
+			
+			if(delim.contains("-"))
+				throw new IllegalArgumentException("Illegal delimiter: " + delim);
+			
+			number = number.substring(4);
+			number = number.replace(delim, ",");
+		}
+		return number;
+	}
 }
